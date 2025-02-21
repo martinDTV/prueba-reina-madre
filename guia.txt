@@ -1,0 +1,52 @@
+Para poder correr el proyecto, primero debemos crear un entorno virtual con el siguiente comando:
+
+$ python3 -m venv venv
+
+Una vez creado el entorno virtual, lo activamos con el siguiente comando:
+
+$ source venv/bin/activate
+
+Después, instalamos las dependencias que vienen en el archivo requirements.txt:
+
+$ pip install -r requirements.txt
+
+Luego, creamos un archivo .env con la siguiente estructura:
+
+ALLOWED_HOSTS="['*']"
+CSRF_TRUSTED_ORIGINS="['http://localhost']"
+CORS_ALLOWED_ORIGINS="['http://localhost:3000', 'http://127.0.0.1', 'http://localhost:8000']"
+SECRET_KEY="django-insecure-lx2njzu3_ka_n%g^z6nal2!z#3r)8un0f9bz4o3_#-gadxd-*b"
+
+# Cuando decimos postgresql, puede ser cualquier tipo de base de datos SQL
+# DATABASE_URL=postgresql://usuario:contraseña@localhost:puerto<5432>/nombre_de_la_base_de_datos
+
+La base de datos no es necesario configurarla, ya que, si no se especifica, Django creará una por defecto, pero será una base de datos SQLite3.
+
+Para correr el proyecto, solo necesitamos ejecutar el siguiente comando:
+
+$ dotenv run python manage.py makemigrations
+
+Esto creará los primeros archivos de migraciones. Luego, debemos migrar esos archivos con el siguiente comando:
+
+$ dotenv run python manage.py migrate
+
+Una vez migrados los datos, creamos un superusuario:
+
+$ dotenv run python manage.py createsuperuser
+
+Con esto, nuestro proyecto ya estaría funcionando, y podríamos iniciar sesión en el frontend.
+Frontend:
+
+Para acceder al frontend, vamos a la carpeta llamada sistemas_reina_madre_frontend, con el comando:
+
+$ cd sistemas_reina_madre_frontend
+
+Una vez dentro, ejecutamos el siguiente comando para instalar los node_modules:
+
+$ npm i
+
+Después de que se instalen las dependencias, debemos ejecutar el siguiente comando para que nuestro proyecto pueda correr:
+
+$ npm run dev
+
+¡Con esto tendremos el proyecto corriendo de manera exitosa!
